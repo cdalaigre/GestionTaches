@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="fr">
+    <head>
+        <meta charset ="utf-8">
+        <title>
+        {% block title %}{% endblock %}
+        </title>
+        <link rel="stylesheet" href="{% static '/css/mon.css' %}">
+    </head>
+    <body>
+        <header>
+        <h2> Gestion des Taches</h2>
+        </header>
+        <section>
+        {% block content %}
+        {% endblock %}
+        </section>
+        <footer>
+            <em> Copyright IUT O, 2049 </em>
+        </footer>
+    </body>
+</html>
+

@@ -1,0 +1,51 @@
+{% extends 'baseLayout.html' %}
+{% block title %} Liste {% endblock %}
+{% block content %}
+<h3 >Tâches en cours ou terminées </h3 >
+    <table>
+        <thead>
+            <th>Nom</th>
+            <th>Description</th>
+            <th>Création</th>
+            <th>Planification</th>
+            <th>DeadLine</th>
+            <th>Terminé</th>
+        </thead>
+        {% for elem in taches %}
+        {% if elem.closed %}
+        <tr class='closed'>
+        {% else %}
+        <tr>
+        {% endif %}
+            <td>{{ elem.name }} </td>
+            <td>{{ elem.description }} </td>
+            <td>{{ elem.creation_date }} </td>
+            <td>{{ elem.schedule_date }} </td>
+            <td>{{ elem.colored_due_date }} </td>
+            <td>{{ elem.closed}} </td>
+        </tr>
+        {% endfor %}
+    </table>
+{% endblock %}
+
+<!--ul >
+    {% for tache in taches %}
+    <li >
+        <h3 >
+        {% if tache.closed %}
+        <span class='closed'>{{ tache.name }}</span>
+        {% else %}
+        {{ tache.name }}
+        {% endif %}
+        </h3 >
+        <h4 >{{ tache.description }} </h4 >
+        <p>
+        Date de rendu : {{ tache.colored_due_date }}
+        </p>
+        <p>
+        Date de debut : {{ tache.schedule_date }}
+        </p>
+    </li >
+    {% endfor %}
+</ul-->
+

@@ -1,0 +1,11 @@
+td, th{
+    padding: 0.5em;
+    text-align: center;
+    border-collapse:initial;
+    border: thin solid black;
+}
+  
+.closed {
+    background-color: green;
+    color:white;
+}

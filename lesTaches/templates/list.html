@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="utf-8">
+        <title>TD1 Django</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    </head>
+    <body>
+        {% block content %}
+        <h1>Liste des tâches </h1>
+        <table class="table">
+            <thead>
+                <th>Nom</th>
+                <th>Description</th>
+                <th>Création</th>
+                <th>Planification</th>
+                <th>DeadLine</th>
+                <th>Terminé</th>
+            </thead>
+            {% for elem in objets %}
+            <tr>
+                <td>{{ elem.name }} </td>
+                <td>{{ elem.description }} </td>
+                <td>{{ elem.creation_date }} </td>
+                <td>{{ elem.schedule_date }} </td>
+                <td>{{ elem.colored_due_date }} </td>
+                <td>{{ elem.closed}} </td>
+            </tr>
+            {% endfor %}
+        </table>
+        {% endblock %}
+    </body>
+</html>
