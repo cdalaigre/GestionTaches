@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from GestionTaches.settings import STATIC_URL
-from lesTaches.models import Task # import de la class Task
+from lesTaches.models import Email, Task 
 from django.template import Template , Context
 
 # Create your views here.
@@ -25,3 +25,11 @@ def task_listing2 ( request ):
 def task_listing3 ( request ):
     objects = Task.objects.all().order_by('due_date')
     return render (request , template_name ='list3.html', context ={'objects': objects} )
+
+def email_detail(request, pk):
+    email = Email.objects.get(pk=pk)
+    user = email.user
+    listes_abonnees = email.listes.all()
+    template = 'email_detail.html'
+    context = {'user': user, 'email': email.mail, 'listes': listes_abonnees }
+    return render(request, template, context)

@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block title %} Liste {% endblock %}
+{% block content %}
+
+<h2>Qui est abonné à quoi ? </h2>
+<p>
+Email : {{email}}
+</p>
+<p>
+User : {{user}}
+</p>
+Listes de diffusion :
+<ul>
+{% for liste in listes %}
+    <li>{{ liste }}</li>
+{% endfor %}
+</ul>
+
+{% endblock %}

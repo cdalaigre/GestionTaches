@@ -4,6 +4,29 @@ from datetime import datetime, date, timedelta
 from django.db import models
 
 
+# utilisateurs
+class Utilisateur(models.Model):
+    nom = models.CharField(max_length=30)
+
+    def __str__(self):
+        return "%s" % (self.nom)
+
+# emails
+class Email(models.Model):
+    mail = models.CharField(max_length=30)
+    user = models.ForeignKey(Utilisateur, on_delete=models.CASCADE,null=True, related_name='emails')
+
+    def __str__(self):
+        return self.mail
+
+# listes de diffusion
+class ListeDiffusion(models.Model):
+    listeName = models.CharField(max_length=30)
+    email = models.ManyToManyField(Email, related_name='listes')
+
+    def __str__(self):
+        return self.listeName
+
 # Create your models here.
 class Task( models.Model ):
     name = models.CharField ( max_length =250)
